@@ -23,7 +23,7 @@ export default function Info() {
         at this time. If you are using Chrome, please carry on.
       </Callout>}
       <Callout type="info">
-        If you wish to use ChassistantGPT in this browsing session,
+        If you wish to use ChassistantGPT in this browsing session,{' '}
         <strong>please keep this tab open</strong>. Otherwise, ChassistantGPT will not be able to hear you.
       </Callout>
       <h2>Status</h2>
@@ -83,10 +83,11 @@ export default function Info() {
         .
       </p>
       <p>
-        The extension's only permission is access to chat.openai.com. It{' '}
+        It does not store any data. It does not transmit data from your device, except for the sentence that directly follows the "Hey Skynet" command, which is sent straight to ChatGPT.
+
+        The extension's only permission is limited access to `chat.openai.com` (webpage + fetch without CORS). It{' '}
         <strong>does not</strong> store any data. It <strong>does not</strong>{' '}
-        transmit data from your device, except for direct communication with
-        ChatGPT.
+        except for the sentence that directly follows the "Hey Skynet" command, which is sent straight to ChatGPT.
       </p>
     </main>
   )
