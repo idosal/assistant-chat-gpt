@@ -5,7 +5,7 @@ A Chrome browser extension that embeds ChatGPT as a hands-free voice assistant i
 Please read the contents of the tab that will open when you install the extension. It contains important information about how to use the extension.
 
 Regarding privacy, it's important to note that the extension's only permission is limited access to `chat.openai.com` (webpage + fetch without CORS).
-It does not store any data. It does not transmit data from your device, except for direct communication with ChatGPT.
+It does not store any data. It does not transmit data from your device, except for the sentence that directly follows the "Hey Skynet" command, which is sent straight to ChatGPT.
 
 Pull requests and suggestions are welcome.
 
@@ -28,7 +28,7 @@ To be updated once the extension is approved.
 1. Clone the repo
 2. Install dependencies with `npm`
 3. Run `npm run build`
-4. Follow the steps in the "Local Install" section above with the resulting `/build/chrome.zip`.
+4. Follow the steps in the "Local Install" section above (with the resulting `/build/chrome.zip`).
 
 ## Credit
 
