@@ -1,0 +1,28 @@
+{
+  "name": "chassistant-gpt",
+  "version": "1.0.0",
+  "main": "background.js",
+  "keywords": [],
+  "author": "idosal",
+  "license": "ISC",
+  "scripts": {
+    "build": "node build.mjs",
+    "lint": "eslint --ext .js,.mjs .",
+    "lint:fix": "eslint --ext .js,.mjs . --fix"
+  },
+  "dependencies": {
+    "archiver": "^5.3.1",
+    "esbuild": "^0.15.17",
+    "eventsource-parser": "^0.0.5",
+    "html-react-parser": "^3.0.4",
+    "markdown-it": "^13.0.1",
+    "punycode": "^2.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.29.0",
+    "prettier": "^2.8.0"
+  }
+}
