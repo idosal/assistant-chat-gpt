@@ -1,0 +1,41 @@
+{
+  "name": "ChassistantGPT",
+  "description": "Use ChatGPT as your personal assistant",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "assets/logo.png",
+    "32": "assets/logo.png",
+    "48": "assets/logo.png",
+    "128": "assets/logo.png"
+  },
+  "commands": {
+    "stop-playback": {
+      "suggested_key": {
+        "windows": "Ctrl+B",
+        "mac": "Command+B",
+        "chromeos": "Ctrl+B",
+        "linux": "Ctrl+B"
+      },
+      "description": "Stop playback"
+    }
+  },
+  "host_permissions": ["https://chat.openai.com/*"],
+  "background": {
+    "service_worker": "background/index.js"
+  },
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_icon": {
+      "16": "assets/logo.png",
+      "32": "assets/logo.png",
+      "48": "assets/logo.png",
+      "128": "assets/logo.png"
+    },
+    "default_title": "ChassistantGPT"
+  },
+  "options_ui": {
+    "open_in_tab": true,
+    "page": "content/index.html"
+  }
+}
