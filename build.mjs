@@ -10,7 +10,12 @@ async function deleteOldDir() {
 
 async function runEsbuild() {
   await esbuild.build({
-    entryPoints: ['src/content/audio.mjs', 'src/popup/index.mjs', 'src/background/index.mjs'],
+    entryPoints: [
+      'src/content/info.mjs',
+      'src/content/audio.mjs',
+      'src/popup/index.mjs',
+      'src/background/index.mjs',
+    ],
     jsx: 'automatic',
     bundle: true,
     minify: true,
@@ -38,18 +43,19 @@ async function build() {
     { src: 'build/background/index.js', dst: 'background/index.js' },
     { src: 'src/content/index.html', dst: 'content/index.html' },
     { src: 'build/content/audio.js', dst: 'content/audio.js' },
+    { src: 'build/content/info.js', dst: 'content/info.js' },
     { src: 'src/popup/index.html', dst: 'popup/index.html' },
     { src: 'build/popup/index.js', dst: 'popup/index.js' },
     { src: 'src/styles.css', dst: 'styles.css' },
     { src: 'src/assets/logo.png', dst: 'assets/logo.png' },
     { src: 'src/assets/logo_recording.png', dst: 'assets/logo_recording.png' },
-    { src: 'src/assets/logo_handling.png', dst: 'assets/logo_handling.png' }
+    { src: 'src/assets/logo_handling.png', dst: 'assets/logo_handling.png' },
   ]
 
   // chromium
   await zipFiles(
     [...commonFiles, { src: 'src/manifest.json', dst: 'manifest.json' }],
-    `./${outdir}/chrome.zip`,
+    `./${outdir}/chrome.zip`
   )
 
   // firefox

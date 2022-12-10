@@ -1,46 +1,120 @@
 <html>
   <style>
-    h2 {
-      text-align: center;
-    }
-    h3 {
-      text-align: center;
+    :root {
+      --background-color: rgb(255, 255, 255);
+      --text-color: rgb(0, 0, 0);
+      --success: #d1e7dd;
+      --success-text: #0f5132;
+      --warning: #fff3cd;
+      --warning-text: #664d03;
+      --info: #cfe2ff;
+      --info-text: #084298;
+      --error: #f0091e;
     }
 
-    h4 {
-      text-align: center;
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background-color: rgb(52, 53, 65);
+        --text-color: rgb(236, 236, 241);
+        --success: #1a8754;
+        --success-text: #fff;
+        --warning: #e6b113;
+        --warning-text: #614802;
+        --info: #0c4fb3;
+        --info-text: #fff;
+        --error: #ff4455;
+      }
+    }
+
+    html {
+      background-color: var(--background-color);
+    }
+
+    body {
+      color: var(--text-color);
+      font-family: sans-serif;
+      font-size: 14px;
+    }
+
+    main {
+      width: 65%;
+      margin: 64px auto;
+      line-height: 1.5em;
+    }
+
+    a,
+    a:visited,
+    a:active {
+      color: inherit;
+    }
+
+    h1 {
+      margin-top: 40px;
+    }
+
+    h2 {
+      margin-top: 24px;
+    }
+
+    p {
+      margin: 16px 0;
+    }
+
+    .callout {
+      padding: 16px;
+      border-radius: 4px;
+      margin: 8px 0;
+    }
+
+    .callout.info {
+      background-color: var(--info);
+      color: var(--info-text);
+    }
+
+    .callout.warning {
+      background-color: var(--warning);
+      color: var(--warning-text);
+    }
+
+    .callout.success {
+      background-color: var(--success);
+      color: var(--success-text);
+    }
+
+    .blinking-dot {
+      width: 12px;
+      height: 12px;
+      background-color: var(--error);
+      border-radius: 50%;
+      display: inline-block;
+      animation: blink 2s infinite;
+    }
+
+    .container {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
     }
   </style>
 
   <head>
     <title>ChassistantGPT</title>
   </head>
-  <h2>
-    Welcome! If you wish to use ChassistantGPT in this browsing session, please do not close this
-    tab.
-  </h2>
-  <h3>ChassistantGPT is requesting access to your microphone so it may hear your voice commands</h3>
-  <h4>
-    ChassistantGPT is a voice assistant. It can be triggered by saying "Hey Skynet". If a prompt follows as part of the same sentence, ChassistantGPT will forward the prompt directly to ChatGPT.
-  </h4>
-  <h4>
-    If not, a "beep" sound will follow (accompanied by switching of the popup icon to red), signifying ChassistantGPT is waiting for input.
-    You may then utter the prompt that will be sent to ChatGPT. Before sending, ChassistantGPT will
-    say "OK, coming up". While waiting for a response from ChatGPT, the popup icon will turn green.
-  </h4>
-  <h4>
-    In addition to the voice response from ChatGPT, you can view the last given answer by clicking
-    on ChassistantGPT's popup.
-  </h4>
-  <h4>You may stop ChassistantGPT's voice playback at any time by pressing Cmd/Ctrl + B.</h4>
-  <br />
-  <br />
-
-  <h4>
-    ChassistantGPT relies on your existing session with ChatGPT. If you're not logged in, please do
-    so at <a target="_blank" href="https://chat.openai.com/chat">https://chat.openai.com/chat</a>.
-  </h4>
-  <br/>
-  <h4>This extension does not store any data. It does not transmit data from your device, except for direct communication with ChatGPT. It has no permissions other than access to the relevant OpenAI domains.</h4>
-  <script src="audio.js"></script>
+  <body>
+    <div id="root"></div>
+    <script src="info.js"></script>
+    <script src="audio.js"></script>
+  </body>
 </html>
