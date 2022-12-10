@@ -5,7 +5,6 @@ export default function Info() {
   const [isMicrophoneEnabled, setIsMicrophoneEnabled] = useState(false);
 
   useEffect(async () => {
-    alert("asking for microphone");
     const permissions = navigator.mediaDevices.getUserMedia({
       audio: true,
       video: false,
@@ -37,7 +36,7 @@ export default function Info() {
       )}
       <h2>How To Use</h2>
       <p>
-        ChassistantGPT is a voice assistant. It can be triggered by saying
+        ChassistantGPT is a voice assistant. It can be triggered by saying{" "}
         <strong>"Hey Skynet"</strong>. If a prompt follows as part of the same
         sentence, ChassistantGPT will forward the prompt directly to ChatGPT.
       </p>
@@ -58,7 +57,7 @@ export default function Info() {
       </p>
       <p>
         ChassistantGPT relies on your existing session with ChatGPT. If you're
-        not logged in, please do so at
+        not logged in, please do so at{" "}
         <a target="_blank" href="https://chat.openai.com/chat">
           https://chat.openai.com/chat
         </a>
