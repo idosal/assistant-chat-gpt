@@ -5,7 +5,7 @@ A **Chrome** browser extension that embeds ChatGPT as a hands-free voice assista
 Please read the contents of the tab that will open when you install the extension. It contains important information about how to use the extension.
 To keep the extension free to use, the speech capabilities are only supported in Chrome (excluding other Chromium-based browsers). However, the code is functional on all modern browsers.
 
-<img width="1025" alt="image" src="https://user-images.githubusercontent.com/18148989/206868846-7b2a498d-54bb-4f82-b40a-4747aacd4fb6.png">
+<img width="1031" alt="image" src="https://user-images.githubusercontent.com/18148989/206879916-285b79a3-12e1-4de7-bf97-c9094954407d.png">
 
 ## Installation
 
@@ -29,7 +29,7 @@ To be updated once the extension is approved.
 4. Follow the steps in the "Local Install" section above (with the resulting `/build/chrome.zip`).
 
 ## Roadmap
-- [ X ] Turn popup into a chat
+- [ X ] Turn popup into a chat with the entire session history
 - [ ] Improve code playbacks
 - [ ] Beautify tab UI
 
