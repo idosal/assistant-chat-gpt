@@ -3,6 +3,7 @@ import Callout from './Callout'
 
 export default function Info() {
   const [isMicrophoneEnabled, setIsMicrophoneEnabled] = useState(false)
+  const isChrome = checkIsChrome()
 
   useEffect(async () => {
     const permissions = navigator.mediaDevices.getUserMedia({
@@ -17,9 +18,13 @@ export default function Info() {
   return (
     <main>
       <h1>Welcome to ChassistantGPT!</h1>
+      {!isChrome && <Callout type="error">
+        Uh oh, it looks like you're not using Chrome. Unfortunately, ChassistantGPT is not supported by other browsers
+        at this time. If you are using Chrome, please carry on.
+      </Callout>}
       <Callout type="info">
         If you wish to use ChassistantGPT in this browsing session,
-        <strong>please keep this tab open</strong>
+        <strong>please keep this tab open</strong>. Otherwise, ChassistantGPT will not be able to hear you.
       </Callout>
       <h2>Status</h2>
       {isMicrophoneEnabled ? (
@@ -86,3 +91,11 @@ export default function Info() {
     </main>
   )
 }
+
+function checkIsChrome() {
+  const isChromium = !!window.chrome
+  const brands = window.navigator?.userAgentData?.brands
+
+  return isChromium && brands?.length === 3
+}
+
