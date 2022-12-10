@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import Callout from "./Callout";
+import React, { useEffect, useState } from 'react'
+import Callout from './Callout'
 
 export default function Info() {
-  const [isMicrophoneEnabled, setIsMicrophoneEnabled] = useState(false);
+  const [isMicrophoneEnabled, setIsMicrophoneEnabled] = useState(false)
 
   useEffect(async () => {
     const permissions = navigator.mediaDevices.getUserMedia({
       audio: true,
       video: false,
-    });
+    })
     permissions.then(() => {
-      setIsMicrophoneEnabled(true);
-    });
-  }, []);
+      setIsMicrophoneEnabled(true)
+    })
+  }, [])
 
   return (
     <main>
@@ -30,13 +30,13 @@ export default function Info() {
         </Callout>
       ) : (
         <Callout type="warning">
-          ChassistantGPT is requesting access to your{" "}
+          ChassistantGPT is requesting access to your{' '}
           <strong>microphone</strong> so it may hear your voice commands
         </Callout>
       )}
       <h2>How To Use</h2>
       <p>
-        ChassistantGPT is a voice assistant. It can be triggered by saying{" "}
+        ChassistantGPT is a voice assistant. It can be triggered by saying{' '}
         <strong>"Hey Skynet"</strong>. If a prompt follows as part of the same
         sentence, ChassistantGPT will forward the prompt directly to ChatGPT.
       </p>
@@ -52,12 +52,12 @@ export default function Info() {
         given answer by clicking on ChassistantGPT's popup.
       </p>
       <p>
-        You may stop ChassistantGPT's voice playback at any time by pressing{" "}
+        You may stop ChassistantGPT's voice playback at any time by pressing{' '}
         <strong>Cmd/Ctrl + B.</strong>
       </p>
       <p>
         ChassistantGPT relies on your existing session with ChatGPT. If you're
-        not logged in, please do so at{" "}
+        not logged in, please do so at{' '}
         <a target="_blank" href="https://chat.openai.com/chat">
           https://chat.openai.com/chat
         </a>
@@ -72,5 +72,5 @@ export default function Info() {
         domains.
       </p>
     </main>
-  );
+  )
 }
