@@ -1,6 +1,7 @@
 import archiver from 'archiver'
 import esbuild from 'esbuild'
 import fs from 'fs'
+import {sassPlugin} from 'esbuild-sass-plugin'
 
 const outdir = 'build'
 
@@ -16,7 +17,9 @@ async function runEsbuild() {
       'src/popup/index.mjs',
       'src/background/index.mjs',
     ],
+    loader: { '.css': 'text' },
     jsx: 'automatic',
+    plugins: [sassPlugin()],
     bundle: true,
     minify: true,
     outdir: outdir,
@@ -46,6 +49,7 @@ async function build() {
     { src: 'build/content/info.js', dst: 'content/info.js' },
     { src: 'src/popup/index.html', dst: 'popup/index.html' },
     { src: 'build/popup/index.js', dst: 'popup/index.js' },
+    { src: 'build/popup/index.css', dst: 'popup/index.css' },
     { src: 'src/styles.css', dst: 'styles.css' },
     { src: 'src/assets/logo.png', dst: 'assets/logo.png' },
     { src: 'src/assets/logo_recording.png', dst: 'assets/logo_recording.png' },

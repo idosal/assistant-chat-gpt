@@ -29,11 +29,12 @@ To be updated once the extension is approved.
 4. Follow the steps in the "Local Install" section above (with the resulting `/build/chrome.zip`).
 
 ## Roadmap
-- [ ] Turn popup into a chat
-- [ ] Improve tab UI
+- [ X ] Turn popup into a chat
+- [ ] Improve code playbacks
+- [ ] Beautify tab UI
 
 ## Contribution
-Pull requests and suggestions are welcome!
+Pull requests and suggestions are welcome.
 
 Many thanks to the brilliant @talkor for improving the UI!
 

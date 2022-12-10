@@ -1,7 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { fetchSSE } from './fetch-sse.mjs'
 
-console.log('requesting mic access')
 navigator.webkitGetUserMedia(
   { audio: true },
   () => {},
@@ -18,6 +17,7 @@ let lastInstruction = ''
 let voice
 const CHASSISTANT_TRIGGER = 'hey skynet'
 let pauseHandler
+const history = []
 
 function stopAnswer() {
   shouldStop = true
@@ -41,9 +41,29 @@ function setIcon(url) {
   })
 }
 
+function updateHistory(message) {
+  if (!history?.length) {
+    return;
+  }
+
+  history[history.length - 1].text = message;
+}
+
+function addToHistory(message, isChatGPT) {
+  let direction = 'outgoing'
+  if (isChatGPT) {
+    lastMessage = message
+    direction = 'incoming'
+  } else {
+    lastInstruction = message
+  }
+
+  history.push({ text: message, time: new Date(), direction })
+}
+
 async function getAnswerFromChatGPT(question, callback) {
   try {
-    lastInstruction = question
+    addToHistory(question, false)
     lastMessage = ''
     const accessToken = await getAccessToken()
     const body = {
@@ -80,7 +100,6 @@ async function getAnswerFromChatGPT(question, callback) {
           callback(lastPart)
           callback(message)
           lastPartIndex = 1
-
           return
         }
 
@@ -89,7 +108,14 @@ async function getAnswerFromChatGPT(question, callback) {
         parentMessageId = data.message.id
         const text = data.message?.content?.parts?.[0]
         if (text) {
+          if (lastMessage) {
+            updateHistory(text)
+          } else {
+            addToHistory(lastMessage, true)
+          }
+
           lastMessage = text
+
           const split = data.message?.content?.parts?.[0].split('.')
           if (split?.length > 1 && split?.length > lastPartIndex) {
             callback(lastPart)
@@ -101,6 +127,8 @@ async function getAnswerFromChatGPT(question, callback) {
       },
     })
   } catch (e) {
+    addToHistory("Error from ChatGPT: " + e.message, true);
+    setIcon('assets/logo.png')
     console.error(e)
   }
 }
@@ -228,8 +256,8 @@ try {
 
   // Listen for messages from the popup
   chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    if (message.type === 'getLastAnswer') {
-      sendResponse({ answer: lastMessage, instruction: lastInstruction })
+    if (message.type === 'getHistory') {
+      sendResponse({ history })
     }
 
     return false

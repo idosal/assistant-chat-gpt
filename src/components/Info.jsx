@@ -42,8 +42,7 @@ export default function Info() {
       )}
       <h2>What is ChassistantGPT?</h2>
       <p>
-        ChassistantGPT is a ChatGPT voice assistant triggered by saying{' '}
-        <strong>"Hey Skynet"</strong>.
+        ChassistantGPT is a ChatGPT voice assistant.
       </p>
       <h2>How To Use</h2>
       <ul>
@@ -75,15 +74,15 @@ export default function Info() {
 
       <h2>Privacy</h2>
       <p>
-        ChassistantGPT relies on your existing session with ChatGPT. If you're
-        not logged in, please do so at{' '}
+        ChassistantGPT <strong>relies on your existing session with ChatGPT</strong>. If you
+        aren't logged in, please do so at{' '}
         <a target="_blank" href="https://chat.openai.com/chat">
           https://chat.openai.com/chat
         </a>
         .
       </p>
       <p>
-        It does not store any data. It does not transmit data from your device, except for the sentence that directly follows the "Hey Skynet" command, which is sent straight to ChatGPT.
+        The extension does not store any data. It does not transmit data from your device, except for the sentence that directly follows the "Hey Skynet" command, which is sent straight to ChatGPT.
 
         The extension's only permission is limited access to `chat.openai.com` (webpage + fetch without CORS). It{' '}
         <strong>does not</strong> store any data. It <strong>does not</strong>{' '}
@@ -96,7 +95,6 @@ export default function Info() {
 function checkIsChrome() {
   const isChromium = !!window.chrome
   const brands = window.navigator?.userAgentData?.brands
-
   return isChromium && brands?.length === 3
 }
 

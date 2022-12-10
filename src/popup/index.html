@@ -1,5 +1,4 @@
 <html>
-<html>
 <style>
     :root {
         --background-color: rgb(255, 255, 255);
@@ -28,20 +27,35 @@
     }
 
     html {
-        background-color: var(--background-color);
+        /*background-color: var(--background-color);*/
+        border-radius: 3px;
+        background: none;
+    }
+
+    .container {
+        border-radius: 10px;
+    }
+
+    div {
+        display: table-row;
     }
 
     body {
         color: var(--text-color);
         font-family: sans-serif;
-        font-size: 14px;
+        font-size: 16px;
+        background: none;
+        margin:0px !important;
+        border-radius: 10px;
     }
 
     main {
         /*width: 100%;*/
-        width: 450px;
-        margin: 20px auto;
+        height: 500px;
+        width: 350px;
+        margin: 10px;
         line-height: 1.5em;
+        border-radius: 5px;
     }
 
     a,
@@ -49,31 +63,16 @@
     a:active {
         color: inherit;
     }
-
-    h1 {
-        margin-top: 10px;
-    }
-
-    h2 {
-        margin-top: 10px;
-    }
-
-    p {
-        margin: 16px 0;
-    }
-
-    .container {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-    }
 </style>
+<link rel="stylesheet" type="text/css" href="index.css">
 
   <head>
     <title>ChassistantGPT</title>
   </head>
   <body>
-    <div id="app"></div>
+  <div class="container">
+    <div id="app" class="container"></div>
     <script type="module" src="index.js"></script>
+  </div>
   </body>
 </html>

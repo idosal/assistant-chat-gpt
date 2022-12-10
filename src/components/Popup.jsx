@@ -1,39 +1,51 @@
-import React, { useEffect, useState } from 'react'
-import MarkdownIt from 'markdown-it'
-import parse from 'html-react-parser'
+import React, { useEffect, useRef, useState } from "react";
+import {
+  MessageList,
+  Message,
+  MessageSeparator
+} from "@chatscope/chat-ui-kit-react";
+import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 
 export default function Popup() {
-  const [lastAnswer, setLastAnswer] = useState('')
-  const [lastInstruction, setLastInstruction] = useState('')
-  const markdown = new MarkdownIt()
+  const msgListRef = useRef();
+  const [history, setHistory] = useState([])
+
+  function handleHistory(response) {
+    if (!response?.length) {
+      return;
+    }
+
+    if (response.length > history?.length) {
+      msgListRef.current.scrollToBottom("auto");
+    }
+
+    setHistory(response);
+  }
 
   useEffect(() => {
-    chrome.runtime.sendMessage({ type: 'getLastAnswer' }, function (response) {
-      // Handle the response from the background service worker
-      setLastAnswer(response.answer)
-      setLastInstruction(response.instruction)
+    chrome.runtime.sendMessage({ type: 'getHistory' }, function (response) {
+      handleHistory(response.history);
     })
     window.setInterval(() => {
-      // Send a message to the background service worker
-      chrome.runtime.sendMessage({ type: 'getLastAnswer' }, function (response) {
-        // Handle the response from the background service worker
-        setLastAnswer(response.answer)
-        setLastInstruction(response.instruction)
+      chrome.runtime.sendMessage({ type: 'getHistory' }, function (response) {
+        handleHistory(response.history);
       })
     }, 1000)
   }, [])
 
-  return !lastInstruction ? (
-    <main>
-      <p>Ask a question by saying "Hey Skynet" followed by your question</p>
-    </main>
-  ) : (
-    <main>
-      <p>Last question:</p>
-      <p>{lastInstruction}</p>
-      <br />
-      <p>Last response:</p>
-      {parse(markdown.render(lastAnswer))}
-    </main>
-  )
+  return <main>
+    <MessageList ref={msgListRef}>
+      <Message model={{
+        message: "Hello! I'm your ChatGPT assistant. To start, simply say \"Hey Skynet\", followed by your prompt.",
+        position: 'single',
+        direction: 'incoming',
+      }} />
+      {history?.length ? <MessageSeparator content={history[0].time.toLocaleString()} /> : null}
+      {history.map(message => <Message model={{
+        message: message.text,
+        position: 'single',
+        direction: message.direction,
+      }} />)}
+    </MessageList>
+  </main>
 }

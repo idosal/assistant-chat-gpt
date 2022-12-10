@@ -11,11 +11,12 @@
     "lint:fix": "eslint --ext .js,.mjs . --fix"
   },
   "dependencies": {
+    "@chatscope/chat-ui-kit-react": "^1.9.8",
+    "@chatscope/chat-ui-kit-styles": "^1.4.0",
     "archiver": "^5.3.1",
     "esbuild": "^0.15.17",
+    "esbuild-sass-plugin": "^2.4.3",
     "eventsource-parser": "^0.0.5",
-    "html-react-parser": "^3.0.4",
-    "markdown-it": "^13.0.1",
     "punycode": "^2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
