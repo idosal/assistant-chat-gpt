@@ -33,4 +33,6 @@ To be updated once the extension is approved.
 
 ## Credit
 
+Many thanks to the brilliant @talko for improving the UI considerably!
+
 This project's template is based on the very cool [wong2/chat-gpt-google-extension](https://github.com/wong2/chat-gpt-google-extensione)
