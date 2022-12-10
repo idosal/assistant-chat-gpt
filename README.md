@@ -3,10 +3,9 @@
 A **Chrome** browser extension that embeds ChatGPT as a hands-free voice assistant in the background. Everything is a simple "Hey, Skynet" away!
 
 Please read the contents of the tab that will open when you install the extension. It contains important information about how to use the extension.
-To keep the extension free to use, it is only supported in Chrome (not including other Chromium-based browsers). However, the code is supported on all modern browsers, but the underlying text-to-speech engine would require payment.
+To keep the extension free to use, the speech capabilities are only supported in Chrome (excluding other Chromium-based browsers). However, the code is functional on all modern browsers.
 
-Regarding privacy, it's important to note that the extension's only permission is limited access to `chat.openai.com` (webpage + fetch without CORS).
-It does not store any data. It does not transmit data from your device, except for the sentence that directly follows the "Hey Skynet" command, which is sent straight to ChatGPT.
+<img width="1025" alt="image" src="https://user-images.githubusercontent.com/18148989/206868846-7b2a498d-54bb-4f82-b40a-4747aacd4fb6.png">
 
 Pull requests and suggestions are welcome.
 
