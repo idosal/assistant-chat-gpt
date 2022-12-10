@@ -63,8 +63,8 @@ export default function Info() {
           green.
         </li>
         <li>
-          In addition to the voice response from ChatGPT, you can view the last
-          given answer by clicking on ChassistantGPT's popup.
+          In addition to the voice response from ChatGPT, you can view the full conversation
+          at any time by clicking on ChassistantGPT's popup.
         </li>
         <li>
           You may stop ChassistantGPT's voice playback at any time by pressing{' '}
