@@ -234,6 +234,20 @@ try {
 
     return false
   })
+
+  tryToPreventClose()
 } catch (e) {
   console.error(e)
+}
+
+function tryToPreventClose() {
+  window.addEventListener('mousedown', () => {
+    window.addEventListener('beforeunload', function (e) {
+      // Show a confirmation message
+      const confirmationMessage =
+        "If you leave this page, AssistantGPT won't work until it is restarted. Are you sure you want to leave?"
+      e.returnValue = confirmationMessage // Gecko, Trident, Chrome 34+
+      return confirmationMessage // Gecko, WebKit, Chrome <34
+    })
+  })
 }
