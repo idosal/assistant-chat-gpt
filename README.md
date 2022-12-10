@@ -4,8 +4,10 @@ A Chrome browser extension that embeds ChatGPT as a hands-free voice assistant i
 
 Please read the contents of the tab that will open when you install the extension. It contains important information about how to use the extension.
 
-Regarding privacy, it's important to note that the extension's only permission is access to `chat.openai.com`.
+Regarding privacy, it's important to note that the extension's only permission is limited access to `chat.openai.com` (webpage + fetch without CORS).
 It does not store any data. It does not transmit data from your device, except for direct communication with ChatGPT.
+
+Pull requests and suggestions are welcome.
 
 ## Installation
 
