@@ -1,19 +1,73 @@
 <html>
-  <style>
-    h2 {
-      text-align: center;
-    }
-    h3 {
-      text-align: center;
+<html>
+<style>
+    :root {
+        --background-color: rgb(255, 255, 255);
+        --text-color: rgb(0, 0, 0);
+        --success: #d1e7dd;
+        --success-text: #0f5132;
+        --warning: #fff3cd;
+        --warning-text: #664d03;
+        --info: #cfe2ff;
+        --info-text: #084298;
+        --error: #f0091e;
     }
 
-    h4 {
-      text-align: center;
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --background-color: rgb(52, 53, 65);
+            --text-color: rgb(236, 236, 241);
+            --success: #1a8754;
+            --success-text: #fff;
+            --warning: #e6b113;
+            --warning-text: #614802;
+            --info: #0c4fb3;
+            --info-text: #fff;
+            --error: #ff4455;
+        }
     }
-    div {
-      width: 400px;
+
+    html {
+        background-color: var(--background-color);
     }
-  </style>
+
+    body {
+        color: var(--text-color);
+        font-family: sans-serif;
+        font-size: 14px;
+    }
+
+    main {
+        /*width: 100%;*/
+        width: 450px;
+        margin: 20px auto;
+        line-height: 1.5em;
+    }
+
+    a,
+    a:visited,
+    a:active {
+        color: inherit;
+    }
+
+    h1 {
+        margin-top: 10px;
+    }
+
+    h2 {
+        margin-top: 10px;
+    }
+
+    p {
+        margin: 16px 0;
+    }
+
+    .container {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+</style>
 
   <head>
     <title>ChassistantGPT</title>

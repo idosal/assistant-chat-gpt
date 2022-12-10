@@ -24,14 +24,16 @@ export default function Popup() {
   }, [])
 
   return !lastInstruction ? (
-    <p>Ask a question by saying "Hey Skynet" followed by your question</p>
+    <main>
+      <p>Ask a question by saying "Hey Skynet" followed by your question</p>
+    </main>
   ) : (
-    <>
+    <main>
       <p>Last question:</p>
       <p>{lastInstruction}</p>
       <br />
       <p>Last response:</p>
       {parse(markdown.render(lastAnswer))}
-    </>
+    </main>
   )
 }
