@@ -21,6 +21,7 @@ export default function Info() {
         If you wish to use ChassistantGPT in this browsing session,
         <strong>please keep this tab open</strong>
       </Callout>
+      <h2>Status</h2>
       {isMicrophoneEnabled ? (
         <Callout type="success">
           <div class="container">
@@ -34,27 +35,40 @@ export default function Info() {
           <strong>microphone</strong> so it may hear your voice commands
         </Callout>
       )}
+      <h2>What is ChassistantGPT?</h2>
+      <p>
+        ChassistantGPT is a ChatGPT voice assistant triggered by saying{' '}
+        <strong>"Hey Skynet"</strong>.
+      </p>
       <h2>How To Use</h2>
-      <p>
-        ChassistantGPT is a voice assistant. It can be triggered by saying{' '}
-        <strong>"Hey Skynet"</strong>. If a prompt follows as part of the same
-        sentence, ChassistantGPT will forward the prompt directly to ChatGPT.
-      </p>
-      <p>
-        If not, a "beep" sound will follow (accompanied by switching of the
-        popup icon to red), signifying ChassistantGPT is waiting for input. You
-        may then utter the prompt that will be sent to ChatGPT. Before sending,
-        ChassistantGPT will say "OK, coming up". While waiting for a response
-        from ChatGPT, the popup icon will turn green.
-      </p>
-      <p>
-        In addition to the voice response from ChatGPT, you can view the last
-        given answer by clicking on ChassistantGPT's popup.
-      </p>
-      <p>
-        You may stop ChassistantGPT's voice playback at any time by pressing{' '}
-        <strong>Cmd/Ctrl + B.</strong>
-      </p>
+      <ul>
+        <li>
+          Say <strong>"Hey Skynet"</strong> followed by your prompt. For
+          example: <em>"Hey Skynet, what is love?"</em> or{' '}
+          <em>"Hey Skeynet... Tell me a joke"</em>.
+        </li>
+        <li>
+          If a prompt follows as part of the same sentence, ChassistantGPT will
+          forward the prompt directly to ChatGPT. If not, a "beep" sound will
+          follow (accompanied by switching of the popup icon to red), signifying
+          ChassistantGPT is waiting for input.
+        </li>
+        <li>
+          Before sending to ChatGPT, ChassistantGPT will say "OK, coming up".
+          While waiting for a response from ChatGPT, the popup icon will turn
+          green.
+        </li>
+        <li>
+          In addition to the voice response from ChatGPT, you can view the last
+          given answer by clicking on ChassistantGPT's popup.
+        </li>
+        <li>
+          You may stop ChassistantGPT's voice playback at any time by pressing{' '}
+          <strong>Cmd/Ctrl + B.</strong>
+        </li>
+      </ul>
+
+      <h2>Privacy</h2>
       <p>
         ChassistantGPT relies on your existing session with ChatGPT. If you're
         not logged in, please do so at{' '}
@@ -63,13 +77,11 @@ export default function Info() {
         </a>
         .
       </p>
-      <h2>Privacy</h2>
       <p>
-        This extension <strong>does not</strong> store any data. It
-        <strong>does not</strong>
+        The extension's only permission is access to chat.openai.com. It{' '}
+        <strong>does not</strong> store any data. It <strong>does not</strong>{' '}
         transmit data from your device, except for direct communication with
-        ChatGPT. It has no permissions other than access to the relevant OpenAI
-        domains.
+        ChatGPT.
       </p>
     </main>
   )
