@@ -1,9 +1,5 @@
-name: Pre-release
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+name: Release
+on: push
 
 jobs:
   build:
