@@ -7,8 +7,6 @@ To keep the extension free to use, the speech capabilities are only supported in
 
 <img width="1025" alt="image" src="https://user-images.githubusercontent.com/18148989/206868846-7b2a498d-54bb-4f82-b40a-4747aacd4fb6.png">
 
-Pull requests and suggestions are welcome.
-
 ## Installation
 
 #### Local Install
@@ -30,8 +28,14 @@ To be updated once the extension is approved.
 3. Run `npm run build`
 4. Follow the steps in the "Local Install" section above (with the resulting `/build/chrome.zip`).
 
-## Credit
+## Roadmap
+- [ ] Turn popup into a chat
+- [ ] Improve tab UI
+
+## Contribution
+Pull requests and suggestions are welcome!
 
 Many thanks to the brilliant @talkor for improving the UI!
 
 This project's template is based on the very cool [wong2/chat-gpt-google-extension](https://github.com/wong2/chat-gpt-google-extensione)
+
