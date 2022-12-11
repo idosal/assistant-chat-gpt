@@ -15,13 +15,18 @@ let lastPart = ''
 let shouldStop = false
 let lastInstruction = ''
 let voice
-const CHASSISTANT_TRIGGER = 'hey girl'
+let triggerPhrase = 'hey girl'
 let pauseHandler
 let longPauseHandler
+let isFillerEnabled = true;
 const history = []
 
-function stopAnswer() {
-  shouldStop = true
+const recognition = new webkitSpeechRecognition()
+recognition.lang = 'en-US'
+recognition.continuous = true
+
+export function setFillerEnabled(enabled) {
+  isFillerEnabled = enabled;
 }
 
 const allVoicesObtained = new Promise(function (resolve) {
@@ -35,6 +40,53 @@ const allVoicesObtained = new Promise(function (resolve) {
     })
   }
 })
+
+allVoicesObtained.then((voices) => {
+  const usVoice = voices.find((voice) => voice.name === 'Google US English')
+  if (usVoice) {
+    setVoice(usVoice)
+  }
+})
+
+export function getVoice() {
+  console.log('get voice', voice)
+  return voice
+}
+
+export function setVoice(v) {
+  console.log('setVoice', v)
+  if (recognition.lang !== v.lang) {
+    recognition.stop();
+  }
+
+  voice = v;
+}
+
+export function setTriggerPhrase(t) {
+  console.log('setPhrase', t)
+
+  triggerPhrase = t;
+}
+
+function stopAnswer() {
+  shouldStop = true
+}
+
+// const allVoicesObtained = new Promise(function (resolve) {
+//   let voices = window.speechSynthesis.getVoices()
+//   if (voices.length !== 0) {
+//     resolve(voices)
+//   } else {
+//     window.speechSynthesis.addEventListener('voiceschanged', function () {
+//       voices = window.speechSynthesis.getVoices()
+//       resolve(voices)
+//     })
+//   }
+// })
+//
+// export function setVoice(v) {
+//   voice = v
+// }
 
 function setIcon(url) {
   chrome.action.setIcon({
@@ -131,8 +183,8 @@ async function getAnswerFromChatGPT(question, callback) {
     addToHistory("Error from ChatGPT: " + e.message, true);
     const utterance = new SpeechSynthesisUtterance('I\'m sorry. Chat G P T returned an error')
     utterance.volume = 0.5
-    if (voice) {
-      utterance.voice = voice
+    if (getVoice()) {
+      utterance.voice = getVoice()
     }
     speechSynthesis.speak(utterance)
     setIcon('assets/logo.png')
@@ -148,6 +200,38 @@ async function getAccessToken() {
     throw new Error('UNAUTHORIZED')
   }
   return resp.accessToken
+}
+
+function addPauseFillers() {
+  pauseHandler = window.setTimeout(() => {
+    const utterance = new SpeechSynthesisUtterance("ummm, lets see");
+    utterance.volume = 0.5;
+    utterance.rate = 0.8;
+    if (getVoice()) {
+      utterance.voice = getVoice();
+    }
+    speechSynthesis.speak(utterance);
+  }, 5000);
+
+  longPauseHandler = window.setTimeout(() => {
+    const utterance = new SpeechSynthesisUtterance("uhmmm...");
+    utterance.volume = 0.5;
+    utterance.rate = 0.6;
+    if (getVoice()) {
+      utterance.voice = getVoice();
+    }
+    speechSynthesis.speak(utterance);
+  }, 12000);
+}
+
+function addAckFiller() {
+  const utterance = new SpeechSynthesisUtterance("okay. coming up");
+  utterance.volume = 0.5;
+  utterance.rate = 0.9;
+  if (getVoice()) {
+    utterance.voice = getVoice();
+  }
+  speechSynthesis.speak(utterance);
 }
 
 async function getAnswer(question) {
@@ -166,34 +250,11 @@ async function getAnswer(question) {
     }
   })
   setIcon('assets/logo_handling.png')
-  const utterance = new SpeechSynthesisUtterance('okay. coming up')
-  utterance.volume = 0.5
-  utterance.rate = 0.9
-  if (voice) {
-    utterance.voice = voice
+
+  if (getVoice().lang === 'en-US' && isFillerEnabled) {
+    addAckFiller();
+    addPauseFillers();
   }
-  speechSynthesis.speak(utterance)
-
-  pauseHandler = window.setTimeout(() => {
-    const utterance = new SpeechSynthesisUtterance('ummm, lets see')
-    utterance.volume = 0.5
-    utterance.rate = 0.8
-    if (voice) {
-      utterance.voice = voice
-    }
-    speechSynthesis.speak(utterance)
-  }, 5000)
-
-  longPauseHandler = window.setTimeout(() => {
-    const utterance = new SpeechSynthesisUtterance('uhmmm...')
-    utterance.volume = 0.5
-    utterance.rate = 0.6
-    if (voice) {
-      utterance.voice = voice
-    }
-    speechSynthesis.speak(utterance)
-  }, 12000)
-
 }
 
 function clearPauseFillers() {
@@ -208,23 +269,21 @@ function processAnswer(answer) {
   setIcon('assets/logo.png')
   const currentUtterance = new SpeechSynthesisUtterance(answer.trimStart())
   currentUtterance.rate = 0.9
-  if (voice) {
-    currentUtterance.voice = voice
+  if (getVoice()) {
+    currentUtterance.voice = getVoice()
   }
   speechSynthesis.speak(currentUtterance)
 }
 
 try {
   let isActive = false
-  allVoicesObtained.then((voices) => {
-    const ukVoice = voices.find((voice) => voice.name === 'Google US English')
-    if (ukVoice) {
-      voice = ukVoice
-    }
-  })
-  const recognition = new webkitSpeechRecognition()
-  recognition.lang = 'en-US'
-  recognition.continuous = true
+  // allVoicesObtained.then((voices) => {
+  //   const ukVoice = voices.find((voice) => voice.name === 'Google US English')
+  //   if (ukVoice) {
+  //     voice = ukVoice
+  //   }
+  // })
+
 
   function startListening() {
     console.log('start listening for commands')
@@ -242,8 +301,8 @@ try {
     }
 
     const trimmed = transcript.trimStart().trimEnd().toLowerCase()
-    if (trimmed.startsWith(CHASSISTANT_TRIGGER)) {
-      const instruction = trimmed.substring(CHASSISTANT_TRIGGER.length)
+    if (trimmed.startsWith(triggerPhrase)) {
+      const instruction = trimmed.substring(triggerPhrase.length)
       if (instruction && instruction?.length > 2) {
         getAnswer(instruction)
         return
@@ -253,8 +312,8 @@ try {
       const utterance = new SpeechSynthesisUtterance('beep!')
       utterance.rate = 2
       utterance.pitch = 1.5
-      if (voice) {
-        utterance.voice = voice
+      if (getVoice()) {
+        utterance.voice = getVoice()
       }
       speechSynthesis.speak(utterance)
     }
@@ -267,6 +326,7 @@ try {
 
   recognition.onend = function () {
     setIcon('assets/logo.png')
+    recognition.lang = getVoice()?.lang || 'en-US'
     recognition.start()
   }
 
@@ -279,7 +339,7 @@ try {
     }
   })
 
-  // Listen for messages from the popup
+  // Listen for history query from the popup
   chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     if (message.type === 'getHistory') {
       sendResponse({ history })

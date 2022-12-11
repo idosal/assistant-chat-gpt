@@ -12,8 +12,8 @@ async function deleteOldDir() {
 async function runEsbuild() {
   await esbuild.build({
     entryPoints: [
-      'src/content/info.mjs',
-      'src/content/audio.mjs',
+      'src/content/index.mjs',
+      // 'src/content/audio.mjs',
       'src/popup/index.mjs',
       'src/background/index.mjs',
     ],
@@ -45,8 +45,8 @@ async function build() {
   const commonFiles = [
     { src: 'build/background/index.js', dst: 'background/index.js' },
     { src: 'src/content/index.html', dst: 'content/index.html' },
-    { src: 'build/content/audio.js', dst: 'content/audio.js' },
-    { src: 'build/content/info.js', dst: 'content/info.js' },
+    { src: 'build/content/index.js', dst: 'content/index.js' },
+    { src: 'build/content/index.css', dst: 'content/index.css' },
     { src: 'src/popup/index.html', dst: 'popup/index.html' },
     { src: 'build/popup/index.js', dst: 'popup/index.js' },
     { src: 'build/popup/index.css', dst: 'popup/index.css' },

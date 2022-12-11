@@ -1,6 +1,7 @@
 # ChassistantGPT
 
-A **Chrome** browser extension that embeds ChatGPT as a hands-free voice assistant in the background. Any ChatGPT prompt is a simple "Hey girl" away! Enjoy the conversation. Currently, only English is supported, but more languages are on the way
+A **Chrome** browser extension that embeds ChatGPT as a hands-free voice assistant in the background. Any ChatGPT prompt is a quick "Hey girl" away!
+ChassistantGPT **supports many languages**. Use your native language, with a custom trigger phrase (configurable in the tab).
 
 https://user-images.githubusercontent.com/18148989/206920857-a726a8f5-7330-44c1-b97f-9af67f4b67f6.mp4
 
@@ -29,10 +30,10 @@ To be updated once the extension is approved.
 4. Follow the steps in the "Local Install" section above (with the resulting `/build/chrome.zip`).
 
 ## Roadmap
-- [X] Turn popup into a chat with session history.
+- [X] Turn popup into a chat with the session history.
+- [X] Support more languages.
+- [X] Customize trigger phrase.
 - [ ] Improve code playbacks.
-- [ ] Support more languages.
-- [ ] Make trigger configurable.
 - [ ] Beautify tab UI.
 
 ## Contribution

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Callout from './Callout'
+import VoiceDropdown from "./VoiceDropdown";
+import TriggerInput from "./TriggerInput";
+import Settings from "./Settings";
 
 export default function Info() {
   const [isMicrophoneEnabled, setIsMicrophoneEnabled] = useState(false)
@@ -40,6 +43,12 @@ export default function Info() {
           <strong>microphone</strong> so it may hear your voice commands
         </Callout>
       )}
+      <h2>Settings</h2>
+      <div style={{ display: "flex", alignItems: 'flex-end', justifyContent: "space-between" }}>
+        <TriggerInput />
+        <VoiceDropdown />
+        <Settings />
+      </div>
       <h2>What is ChassistantGPT?</h2>
       <p>
         ChassistantGPT is a ChatGPT voice assistant.
@@ -50,6 +59,10 @@ export default function Info() {
           Say <strong>"Hey girl"</strong> followed by your prompt. For
           example: <em>"Hey girl, what is love?"</em> or{' '}
           <em>"Hey girl... Tell me a joke"</em>.
+        </li>
+        <li>
+          You can change the <strong>voice (and language)</strong> in the dropdown above. You can also change the <strong>trigger phrase</strong> to any string in any language using the input field.
+          When defined, use your custom trigger phrase instead of "Hey girl", and speak in your chosen language.
         </li>
         <li>
           If a prompt follows as part of the same sentence, ChassistantGPT will
@@ -83,7 +96,7 @@ export default function Info() {
       </p>
       <p>
         The extension <strong>does not</strong> store any data.{' '}
-        It <strong>does not</strong> transmit data from your device, except for the sentence that directly follows the "Hey girl" command, which is sent straight to ChatGPT.
+        It <strong>does not</strong> transmit data from your device, except for the sentence that directly follows the trigger phrase, which is sent straight to ChatGPT.
       </p>
     </main>
   )
