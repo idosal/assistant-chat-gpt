@@ -180,8 +180,11 @@ async function getAnswerFromChatGPT(question, callback) {
       },
     })
   } catch (e) {
-    addToHistory("Error from ChatGPT: " + e.message, true);
-    const utterance = new SpeechSynthesisUtterance('I\'m sorry. Chat G P T returned an error')
+    clearPauseFillers();
+    const historySuffix = e.message === 'UNAUTHORIZED' ? '. Please authenticate at https://chat.openai.com/chat' : ''
+    addToHistory("Error from ChatGPT: " + e.message + historySuffix, true);
+    const voiceSuffix = e.message === 'UNAUTHORIZED' ? ' Please authenticate at chat.openai.com' : ''
+    const utterance = new SpeechSynthesisUtterance('I\'m sorry. Chat G P T returned an error.' + voiceSuffix)
     utterance.volume = 0.5
     if (getVoice()) {
       utterance.voice = getVoice()
@@ -286,7 +289,6 @@ try {
 
 
   function startListening() {
-    console.log('start listening for commands')
     isActive = true
     setIcon('assets/logo_recording.png')
   }
@@ -302,8 +304,12 @@ try {
 
     const trimmed = transcript.trimStart().trimEnd().toLowerCase()
     if (trimmed.startsWith(triggerPhrase)) {
-      const instruction = trimmed.substring(triggerPhrase.length)
+      let instruction = trimmed.substring(triggerPhrase.length)
       if (instruction && instruction?.length > 2) {
+        if (instruction.startsWith(triggerPhrase)) {
+          instruction = instruction.substring(triggerPhrase.length)
+        }
+
         getAnswer(instruction)
         return
       } else {

@@ -26,7 +26,6 @@ const VoiceDropdown = () => {
   // send voice with target name to background script
   const handleChange = (event) => {
     setSelectedVoice(event.target.value);
-    console.log(voices.find(voice => voice.name === event.target.value));
     setVoice(voices.find(voice => voice.name === event.target.value));
   };
 
