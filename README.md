@@ -31,9 +31,10 @@ To be updated once the extension is approved.
 4. Follow the steps in the "Local Install" section above (with the resulting `/build/chrome.zip`).
 
 ## Roadmap
-- [X] Turn popup into a chat with the session history.
+- [X] Turn popup into a chat with session history.
 - [ ] Improve code playbacks.
 - [ ] Support more languages.
+- [ ] Make trigger configurable.
 - [ ] Beautify tab UI.
 
 ## Contribution
