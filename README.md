@@ -7,7 +7,7 @@ https://user-images.githubusercontent.com/18148989/206920857-a726a8f5-7330-44c1-
 Please read the contents of the tab that will open when you install the extension. It contains important information about how to use the extension.
 To keep the extension free to use, the speech capabilities are only supported in Chrome (excluding other Chromium-based browsers). However, the code is functional on all modern browsers.
 
-<img width="1308" alt="image" src="https://user-images.githubusercontent.com/18148989/206917526-dde51ed1-3203-4bae-b966-6419893a980b.png">
+https://user-images.githubusercontent.com/18148989/206921422-c7ddcb3b-952d-4737-b12e-5be727078693.mp4
 
 ## Installation
 
