@@ -1,7 +1,7 @@
 {
   "name": "ChassistantGPT",
   "description": "Use ChatGPT as your personal assistant",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "manifest_version": 3,
   "icons": {
     "16": "assets/logo.png",
