@@ -1,6 +1,8 @@
 # ChassistantGPT
 
-A **Chrome** browser extension that embeds ChatGPT as a hands-free voice assistant in the background. Any ChatGPT prompt is a quick "Hey girl" away!
+A **Chrome** browser extension that embeds ChatGPT as a hands-free voice assistant in the background. Any ChatGPT prompt is a simple "Hey girl" away! Enjoy the conversation. Currently, only English is supported, but more languages are on the way.
+
+https://user-images.githubusercontent.com/18148989/206920108-efaaf7a6-e484-4949-99fa-4ac6e48d32e9.mov
 
 Please read the contents of the tab that will open when you install the extension. It contains important information about how to use the extension.
 To keep the extension free to use, the speech capabilities are only supported in Chrome (excluding other Chromium-based browsers). However, the code is functional on all modern browsers.
