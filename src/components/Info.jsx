@@ -47,8 +47,8 @@ export default function Info() {
       <h2>How To Use</h2>
       <ul>
         <li>
-          Say <strong>"Hey Skynet"</strong> followed by your prompt. For
-          example: <em>"Hey Skynet, what is love?"</em> or{' '}
+          Say <strong>"Hey girl"</strong> followed by your prompt. For
+          example: <em>"Hey girl, what is love?"</em> or{' '}
           <em>"Hey Skeynet... Tell me a joke"</em>.
         </li>
         <li>
@@ -82,11 +82,11 @@ export default function Info() {
         .
       </p>
       <p>
-        The extension does not store any data. It does not transmit data from your device, except for the sentence that directly follows the "Hey Skynet" command, which is sent straight to ChatGPT.
+        The extension does not store any data. It does not transmit data from your device, except for the sentence that directly follows the "Hey, girl" command, which is sent straight to ChatGPT.
 
         The extension's only permission is limited access to `chat.openai.com` (webpage + fetch without CORS). It{' '}
         <strong>does not</strong> store any data. It <strong>does not</strong>{' '}
-        except for the sentence that directly follows the "Hey Skynet" command, which is sent straight to ChatGPT.
+        except for the sentence that directly follows the "Hey, girl" command, which is sent straight to ChatGPT.
       </p>
     </main>
   )

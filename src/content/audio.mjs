@@ -15,7 +15,7 @@ let lastPart = ''
 let shouldStop = false
 let lastInstruction = ''
 let voice
-const CHASSISTANT_TRIGGER = 'hey skynet'
+const CHASSISTANT_TRIGGER = 'hey girl'
 let pauseHandler
 const history = []
 
