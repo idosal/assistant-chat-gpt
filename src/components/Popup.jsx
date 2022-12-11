@@ -36,7 +36,7 @@ export default function Popup() {
   return <main>
     <MessageList style={{ display: "flex" }} ref={ msgListRef }>
       <Message model={{
-        message: "Hello! I'm your ChatGPT assistant. To start, simply say \"Hey girl\", followed by your prompt.",
+        message: "Hello! I'm your ChatGPT assistant. To start, simply say \"Hey girl\" (or your custom trigger), followed by your prompt.",
         position: 'single',
         direction: 'incoming',
       }} />

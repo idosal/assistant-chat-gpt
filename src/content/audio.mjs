@@ -297,19 +297,19 @@ try {
     const transcript = event.results[event.results?.length - 1][0].transcript
     console.log(transcript)
     if (isActive) {
+      let instruction = transcript
+      if (transcript.trimStart().startsWith(triggerPhrase)) {
+        instruction = transcript.trimStart().substring(triggerPhrase.length)
+      }
       isActive = false
-      getAnswer(transcript)
+      getAnswer(instruction)
       return
     }
 
     const trimmed = transcript.trimStart().trimEnd().toLowerCase()
     if (trimmed.startsWith(triggerPhrase)) {
-      let instruction = trimmed.substring(triggerPhrase.length)
+      const instruction = trimmed.substring(triggerPhrase.length)
       if (instruction && instruction?.length > 2) {
-        if (instruction.startsWith(triggerPhrase)) {
-          instruction = instruction.substring(triggerPhrase.length)
-        }
-
         getAnswer(instruction)
         return
       } else {
