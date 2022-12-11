@@ -17,6 +17,7 @@ let lastInstruction = ''
 let voice
 const CHASSISTANT_TRIGGER = 'hey girl'
 let pauseHandler
+let longPauseHandler
 const history = []
 
 function stopAnswer() {
@@ -128,6 +129,12 @@ async function getAnswerFromChatGPT(question, callback) {
     })
   } catch (e) {
     addToHistory("Error from ChatGPT: " + e.message, true);
+    const utterance = new SpeechSynthesisUtterance('I\'m sorry. Chat G P T returned an error')
+    utterance.volume = 0.5
+    if (voice) {
+      utterance.voice = voice
+    }
+    speechSynthesis.speak(utterance)
     setIcon('assets/logo.png')
     console.error(e)
   }
@@ -176,13 +183,31 @@ async function getAnswer(question) {
     }
     speechSynthesis.speak(utterance)
   }, 5000)
+
+  longPauseHandler = window.setTimeout(() => {
+    const utterance = new SpeechSynthesisUtterance('ummm...')
+    utterance.volume = 0.5
+    utterance.rate = 0.6
+    if (voice) {
+      utterance.voice = voice
+    }
+    speechSynthesis.speak(utterance)
+  }, 10000)
+
+}
+
+function clearPauseFillers() {
+  window.clearTimeout(pauseHandler);
+  pauseHandler = undefined;
+  window.clearTimeout(longPauseHandler);
+  longPauseHandler = undefined;
 }
 
 function processAnswer(answer) {
-  window.clearTimeout(pauseHandler)
-  pauseHandler = undefined
+  clearPauseFillers();
   setIcon('assets/logo.png')
   const currentUtterance = new SpeechSynthesisUtterance(answer.trimStart())
+  currentUtterance.rate = 0.9
   if (voice) {
     currentUtterance.voice = voice
   }

@@ -24,7 +24,7 @@ export default function Info() {
       </Callout>}
       <Callout type="info">
         If you wish to use ChassistantGPT in this browsing session,{' '}
-        <strong>please keep this tab open</strong>. Otherwise, ChassistantGPT will not be able to hear you.
+        <strong>please keep this tab open</strong>. Otherwise, ChassistantGPT won't be able to hear you.
       </Callout>
       <h2>Status</h2>
       {isMicrophoneEnabled ? (
@@ -49,7 +49,7 @@ export default function Info() {
         <li>
           Say <strong>"Hey girl"</strong> followed by your prompt. For
           example: <em>"Hey girl, what is love?"</em> or{' '}
-          <em>"Hey Skeynet... Tell me a joke"</em>.
+          <em>"Hey girl... Tell me a joke"</em>.
         </li>
         <li>
           If a prompt follows as part of the same sentence, ChassistantGPT will
@@ -82,11 +82,8 @@ export default function Info() {
         .
       </p>
       <p>
-        The extension does not store any data. It does not transmit data from your device, except for the sentence that directly follows the "Hey, girl" command, which is sent straight to ChatGPT.
-
-        The extension's only permission is limited access to `chat.openai.com` (webpage + fetch without CORS). It{' '}
-        <strong>does not</strong> store any data. It <strong>does not</strong>{' '}
-        except for the sentence that directly follows the "Hey, girl" command, which is sent straight to ChatGPT.
+        The extension <strong>does not</strong> store any data.{' '}
+        It <strong>does not</strong> transmit data from your device, except for the sentence that directly follows the "Hey, girl" command, which is sent straight to ChatGPT.
       </p>
     </main>
   )

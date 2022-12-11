@@ -16,7 +16,7 @@ export default function Popup() {
     }
 
     if (response.length > history?.length) {
-      msgListRef.current.scrollToBottom("auto");
+      msgListRef.current.scrollToBottom("smooth");
     }
 
     setHistory(response);
@@ -34,18 +34,19 @@ export default function Popup() {
   }, [])
 
   return <main>
-    <MessageList ref={msgListRef}>
+    <MessageList style={{ display: "flex" }} ref={ msgListRef }>
       <Message model={{
         message: "Hello! I'm your ChatGPT assistant. To start, simply say \"Hey girl\", followed by your prompt.",
         position: 'single',
         direction: 'incoming',
       }} />
-      {history?.length ? <MessageSeparator content={history[0].time.toLocaleString()} /> : null}
-      {history.map(message => <Message model={{
+      { history?.length ? <MessageSeparator content={history[0].time.toLocaleString()} /> : null }
+      { history.map(message => <Message model={{
         message: message.text,
         position: 'single',
         direction: message.direction,
-      }} />)}
+        }} />)
+      }
     </MessageList>
   </main>
 }
