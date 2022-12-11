@@ -83,7 +83,7 @@ export default function Info() {
       </p>
       <p>
         The extension <strong>does not</strong> store any data.{' '}
-        It <strong>does not</strong> transmit data from your device, except for the sentence that directly follows the "Hey, girl" command, which is sent straight to ChatGPT.
+        It <strong>does not</strong> transmit data from your device, except for the sentence that directly follows the "Hey girl" command, which is sent straight to ChatGPT.
       </p>
     </main>
   )

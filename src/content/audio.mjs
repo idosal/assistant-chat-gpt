@@ -185,14 +185,14 @@ async function getAnswer(question) {
   }, 5000)
 
   longPauseHandler = window.setTimeout(() => {
-    const utterance = new SpeechSynthesisUtterance('ummm...')
+    const utterance = new SpeechSynthesisUtterance('uhmmm...')
     utterance.volume = 0.5
     utterance.rate = 0.6
     if (voice) {
       utterance.voice = voice
     }
     speechSynthesis.speak(utterance)
-  }, 10000)
+  }, 12000)
 
 }
 
