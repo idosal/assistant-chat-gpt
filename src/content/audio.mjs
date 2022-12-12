@@ -72,22 +72,6 @@ function stopAnswer() {
   shouldStop = true
 }
 
-// const allVoicesObtained = new Promise(function (resolve) {
-//   let voices = window.speechSynthesis.getVoices()
-//   if (voices.length !== 0) {
-//     resolve(voices)
-//   } else {
-//     window.speechSynthesis.addEventListener('voiceschanged', function () {
-//       voices = window.speechSynthesis.getVoices()
-//       resolve(voices)
-//     })
-//   }
-// })
-//
-// export function setVoice(v) {
-//   voice = v
-// }
-
 function setIcon(url) {
   chrome.action.setIcon({
     path: chrome.runtime.getURL(url),
@@ -278,15 +262,12 @@ function processAnswer(answer) {
   speechSynthesis.speak(currentUtterance)
 }
 
+function sessionKeepAlive() {
+  window.setInterval(() => getAccessToken(), 4 * 60 * 1000)
+}
+
 try {
   let isActive = false
-  // allVoicesObtained.then((voices) => {
-  //   const ukVoice = voices.find((voice) => voice.name === 'Google US English')
-  //   if (ukVoice) {
-  //     voice = ukVoice
-  //   }
-  // })
-
 
   function startListening() {
     isActive = true
@@ -355,6 +336,7 @@ try {
   })
 
   tryToPreventClose()
+  sessionKeepAlive()
 } catch (e) {
   console.error(e)
 }
