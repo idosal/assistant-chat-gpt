@@ -36,6 +36,7 @@ To be updated once the extension is approved.
 - [X] Turn popup into a chat with the session history.
 - [X] Support more languages.
 - [X] Customize trigger phrase.
+- [ ] Add push-to-talk.
 - [ ] Improve code playbacks.
 - [ ] Beautify tab UI.
 
