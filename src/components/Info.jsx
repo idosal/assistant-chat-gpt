@@ -61,8 +61,11 @@ export default function Info() {
           <em>"Hey girl... Tell me a joke"</em>.
         </li>
         <li>
-          You can change the <strong>voice (and language)</strong> in the dropdown above. You can also change the <strong>trigger phrase</strong> to any string in any language using the input field.
-          When defined, use your custom trigger phrase instead of "Hey girl", and speak in your chosen language.
+          ChassistantGPT <strong>supports 60+ languages and dialects</strong>. You can change the voice (and language) in the dropdown above. You can also change the <strong>trigger phrase</strong> to any string in any language using the input field.
+          When defined, use your custom trigger phrase instead of "Hey girl", and converse with the assistant in your chosen language.
+        </li>
+        <li>
+          If you prefer <strong>not to use the voice trigger phrase</strong>, you can press <strong>Ctrl/Cmd + Shift + E</strong> to activate ChassistantGPT. For example: <em>*Ctrl+Shift+E* "What is love?"</em>.
         </li>
         <li>
           If a prompt follows as part of the same sentence, ChassistantGPT will

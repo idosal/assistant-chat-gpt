@@ -266,12 +266,23 @@ function sessionKeepAlive() {
   window.setInterval(() => getAccessToken(), 4 * 60 * 1000)
 }
 
+async function notifyStartListening() {
+  setIcon('assets/logo_recording.png')
+  const utterance = new SpeechSynthesisUtterance("beep!");
+  utterance.rate = 2;
+  utterance.pitch = 1.5;
+  if (getVoice()) {
+    utterance.voice = getVoice();
+  }
+  speechSynthesis.speak(utterance);
+}
+
 try {
   let isActive = false
 
   function startListening() {
+    notifyStartListening();
     isActive = true
-    setIcon('assets/logo_recording.png')
   }
 
   recognition.addEventListener('result', async () => {
@@ -296,13 +307,6 @@ try {
       } else {
         startListening()
       }
-      const utterance = new SpeechSynthesisUtterance('beep!')
-      utterance.rate = 2
-      utterance.pitch = 1.5
-      if (getVoice()) {
-        utterance.voice = getVoice()
-      }
-      speechSynthesis.speak(utterance)
     }
   })
 
@@ -323,6 +327,15 @@ try {
     if (command === 'stop-playback') {
       speechSynthesis.cancel()
       stopAnswer()
+    }
+
+    if (command === 'start-listening') {
+      if (isActive) {
+        isActive = false
+        setIcon('assets/logo.png')
+      } else {
+        startListening()
+      }
     }
   })
 

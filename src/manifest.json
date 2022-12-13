@@ -1,7 +1,7 @@
 {
   "name": "ChassistantGPT",
   "description": "Use ChatGPT as your personal assistant",
-  "version": "1.5.4",
+  "version": "1.6.0",
   "manifest_version": 3,
   "icons": {
     "16": "assets/logo.png",
@@ -17,7 +17,16 @@
         "chromeos": "Ctrl+B",
         "linux": "Ctrl+B"
       },
-      "description": "Stop playback"
+      "description": "Stop assistant playback"
+    },
+    "start-listening": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E",
+        "chromeos": "Ctrl+Shift+E",
+        "linux": "Ctrl+Shift+E"
+      },
+      "description": "Push to toggle listening to voice commands"
     }
   },
   "host_permissions": ["https://chat.openai.com/*"],
