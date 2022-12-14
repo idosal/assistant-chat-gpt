@@ -15,6 +15,10 @@ To keep the extension free to use, the speech capabilities are only supported in
 
 ## Installation
 
+#### Install from Chrome Web Store (recommended
+
+[Download from the Chrome Web Store](https://chrome.google.com/webstore/detail/chassistantgpt/kepjfakbnekbifkjnfhmoilbbnncnfjc)
+
 #### Local Install
 
 1. Download `chrome.zip` from [Releases](https://github.com/idosal/assistant-chat-gpt/releases).
@@ -22,10 +26,6 @@ To keep the extension free to use, the speech capabilities are only supported in
 3. In Chrome, go to the extensions page (`chrome://extensions`).
 4. Enable Developer Mode.
 5. Drag the unzipped folder anywhere on the page to import it (do not delete the folder afterwards).
-
-#### Install from Chrome Web Store (Preferred)
-
-To be updated once the extension is approved.
 
 ## Build from source
 
