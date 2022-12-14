@@ -15,7 +15,7 @@ To keep the extension free to use, the speech capabilities are only supported in
 
 ## Installation
 
-#### Install from Chrome Web Store (recommended
+#### Install from Chrome Web Store (recommended)
 
 [Download from the Chrome Web Store](https://chrome.google.com/webstore/detail/chassistantgpt/kepjfakbnekbifkjnfhmoilbbnncnfjc)
 
