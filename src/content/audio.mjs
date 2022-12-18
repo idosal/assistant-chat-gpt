@@ -65,7 +65,7 @@ export function setVoice(v) {
 export function setTriggerPhrase(t) {
   console.log('setPhrase', t)
 
-  triggerPhrase = t;
+  triggerPhrase = t ? t.toLowerCase() : "hey girl"
 }
 
 function stopAnswer() {
@@ -303,7 +303,6 @@ try {
       const instruction = trimmed.substring(triggerPhrase.length)
       if (instruction && instruction?.length > 2) {
         getAnswer(instruction)
-        return
       } else {
         startListening()
       }
