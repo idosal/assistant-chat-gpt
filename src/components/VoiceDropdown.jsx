@@ -19,6 +19,12 @@ const VoiceDropdown = () => {
     })
 
     voices.then((voices) => {
+      // Sort voices by language
+      voices.sort((a, b) => a.lang.localeCompare(b.lang));
+
+      // Limit number of voices shown to 250
+      voices = voices.slice(0, 250);
+
       setVoices(voices);
     })
   }, []);
@@ -28,18 +34,35 @@ const VoiceDropdown = () => {
     setSelectedVoice(event.target.value);
     setVoice(voices.find(voice => voice.name === event.target.value));
   };
+  
+  const handleLanguageChange = (event) => {
+  setSelectedLanguage(event.target.value);  
+    // Filter voices by selected language
+  const filteredVoices = voices.filter(voice => voice.lang === event.target.value);
+
+  // Set selected voice to the first voice in the filtered voices
+  setSelectedVoice(filteredVoices[0].name);
+  setVoice(filteredVoices[0]);
+  };
 
   return (
     <div style={{ display: "flex", alignItems: 'flex-end', justifyContent: "space-between" }}>
       <label style={{ paddingRight:" 10px" }}>
         Voice
       </label>
-      <select value={ selectedVoice } onChange={handleChange}>
-        {voices.map((voice) => (
-          <option key={voice.name} value={voice.name}>
-            {voice.name} ({voice.lang})
-          </option>
-        ))}
+      <select value={ selectedLanguage } onChange={handleLanguageChange}>
+      {voices.map((voice) => (
+      <option key={voice.name} value={voice.lang}>
+      {voice.lang}
+      </option>
+      ))}
+      </select>
+      <select value={ selectedVoice } onChange={handleVoiceChange}>
+      {voices.map((voice) => (
+      <option key={voice.name} value={voice.name}>
+      {voice.name}
+      </option>
+      ))}
       </select>
     </div>
   );
