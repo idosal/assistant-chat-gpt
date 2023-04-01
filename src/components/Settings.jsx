@@ -12,7 +12,7 @@ const Settings = () => {
   };
 
   return (
-    <div style={{ display: "flex", alignItems: 'flex-end', justifyContent: "space-between" }}>
+    <div className='setting-object' style={{ display: "flex", alignItems: 'flex-end', justifyContent: "space-between" }}>
       <Toggle
         id='filler'
         defaultChecked={ isFillerEnabled }

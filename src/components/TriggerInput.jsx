@@ -10,7 +10,7 @@ const VoiceDropdown = () => {
   };
 
   return (
-    <div style={{ display: "flex", alignItems: 'flex-end', justifyContent: "space-between" }}>
+    <div className='setting-object' style={{ display: "flex", alignItems: 'flex-end', justifyContent: "space-between" }}>
       <label style={{ paddingRight:" 10px" }}>
        Trigger phrase
       </label>

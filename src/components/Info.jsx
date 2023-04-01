@@ -44,7 +44,7 @@ export default function Info() {
         </Callout>
       )}
       <h2>Settings</h2>
-      <div style={{ display: "flex", alignItems: 'flex-end', justifyContent: "space-between" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: 'center', justifyContent: "space-between" }}>
         <TriggerInput />
         <VoiceDropdown />
         <Settings />

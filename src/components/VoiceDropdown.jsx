@@ -30,11 +30,10 @@ const VoiceDropdown = () => {
   };
 
   return (
-    <div style={{ display: "flex", alignItems: 'flex-end', justifyContent: "space-between" }}>
+    <div className='setting-object'  style={{ display: "flex", alignItems: 'flex-end', justifyContent: "space-between" }}>
       <label style={{ paddingRight:" 10px" }}>
         Voice
       </label>
-      <button class="voice-test-btn" onclick={testVoice}>🔊 Test Voice</button>
       <select value={ selectedVoice } onChange={handleChange}>
         {voices.map((voice) => (
           <option key={voice.name} value={voice.name}>
@@ -42,6 +41,7 @@ const VoiceDropdown = () => {
           </option>
         ))}
       </select>
+      <button class="voice-test-btn" onclick={testVoice}>🔊 Test Voice</button>
     </div>
   );
 };
