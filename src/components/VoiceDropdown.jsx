@@ -41,7 +41,7 @@ const VoiceDropdown = () => {
           </option>
         ))}
       </select>
-      <button class="voice-test-btn" onclick={testVoice}>🔊 Test Voice</button>
+      <button class="voice-test-btn" onClick={testVoice}>🔊 Test Voice</button>
     </div>
   );
 };
