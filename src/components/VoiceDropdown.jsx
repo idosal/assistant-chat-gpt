@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { setVoice } from "../content/audio.mjs";
+import { setVoice, testVoice } from "../content/audio.mjs";
 
 const VoiceDropdown = () => {
   const [voices, setVoices] = useState([]);
@@ -34,6 +34,7 @@ const VoiceDropdown = () => {
       <label style={{ paddingRight:" 10px" }}>
         Voice
       </label>
+      <button class="voice-test-btn" onclick={testVoice}>🔊 Test Voice</button>
       <select value={ selectedVoice } onChange={handleChange}>
         {voices.map((voice) => (
           <option key={voice.name} value={voice.name}>

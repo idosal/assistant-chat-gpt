@@ -20,6 +20,7 @@ let pauseHandler
 let longPauseHandler
 let isFillerEnabled = true;
 const history = []
+const voiceTestText = 'The quick brown fox jumps over the lazy dog.';
 
 const recognition = new webkitSpeechRecognition()
 recognition.lang = 'en-US'
@@ -249,6 +250,16 @@ function clearPauseFillers() {
   pauseHandler = undefined;
   window.clearTimeout(longPauseHandler);
   longPauseHandler = undefined;
+}
+
+// use the constant voiceTestText to speak with the current voice
+export function testVoice() {
+  const currentUtterance = new SpeechSynthesisUtterance(voiceTestText)
+  currentUtterance.rate = 0.9
+  if (getVoice()) {
+    currentUtterance.voice = getVoice()
+  }
+  speechSynthesis.speak(currentUtterance)  
 }
 
 function processAnswer(answer) {
