@@ -30,7 +30,7 @@ To keep the extension free to use, the speech capabilities are only supported in
 ## Build from source
 
 1. Clone the repo
-2. Install dependencies with `npm`
+2. Install dependencies with `npm install`
 3. Run `npm run build`
 4. Follow the steps in the "Local Install" section above (with the resulting `/build/chrome.zip`).
 
